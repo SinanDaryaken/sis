@@ -1,0 +1,44 @@
+.is-invalid input.form-check-input {
+    border-color: #ff5b5b;
+}
+
+.is-invalid .form-check-label {
+    color: #ff5b5b;
+}
+
+.multiselect-option.is-selected {
+    background: #536de6 !important;
+}
+
+.multiselect .multiselect-tag {
+    background: #536de6 !important;
+}
+
+.multiselect-option.is-pointed {
+    background: #536de6 !important;
+    color: #fff !important
+}
+
+.form-floating > .multiselect {
+    padding-top: 1.625rem;
+    padding-bottom: 0.625rem;
+    height: calc(3.5rem + 2px);
+    line-height: 1.25;
+}
+
+.form-floating > .multiselect ~ label {
+    opacity: .65;
+    -webkit-transform: scale(.85) translateY(-0.5rem) translateX(0.15rem);
+    transform: scale(.85) translateY(-0.5rem) translateX(0.15rem);
+}
+
+.form-floating  .multiselect-tags {
+    padding-left: 0;
+}
+
+.form-floating .multiselect-placeholder {
+    margin-top: .5rem !important;
+    font-size: .9rem;
+    font-weight: 400;
+    color: var(--ct-form-select-color);
+}
