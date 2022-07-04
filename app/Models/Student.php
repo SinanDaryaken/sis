@@ -53,8 +53,8 @@ class Student extends Model
     /**
      * @return BelongsTo
      */
-    public function students(): BelongsTo
+    public function family(): BelongsTo
     {
-        return $this->belongsTo(Student::class);
+        return $this->belongsTo(Family::class);
     }
 }
