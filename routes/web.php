@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware(['guest:web'])->group(function () {
+    Route::view('/login', 'login')->name('login');
+    Route::view('/register', 'login')->name('register');
+});
+
+Route::middleware(['auth:web'])->group(function () {
+    Route::view('{any?}', 'index')
+        ->where('any', '^(?!api|login|recovery-password|new-password|save-password).*$');
 });
