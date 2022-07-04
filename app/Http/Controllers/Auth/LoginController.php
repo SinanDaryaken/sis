@@ -10,6 +10,13 @@ use App\Facades\OutputService;
 
 class LoginController extends Controller
 {
+    public function auth(Request $request)
+    {
+        $family = Auth::guard('sanctum')->user();
+        $data = $family ? new FamilyResource($family) : null;
+        return OutputService::init($data)->output();
+    }
+
     public function login(Request $request)
     {
         $credentials = $this->validate($request, $this->credentials());
