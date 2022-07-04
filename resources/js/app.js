@@ -10,6 +10,12 @@ import Main from './components/module/Main.vue';
 
 const app = createApp(Main);
 
+app.config.globalProperties.auth = null;
+
+await axios.get('/auth').then((response) => {
+    app.config.globalProperties.auth = response.data.data;
+});
+
 app.use(router)
     .use(VueSweetalert2)
     .mount('#app');
