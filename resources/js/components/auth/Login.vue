@@ -5,11 +5,9 @@
             <div class="align-items-center d-flex h-100">
                 <div class="card-body">
                     <div class="auth-brand text-center text-lg-start">
-                        <span><img src="/assets/admin/images/logo.png" height="108"></span>
+                        <span><img src="/assets/images/logo.png" height="108"></span>
                     </div>
-
                     <h4 class="mt-0">Login</h4>
-
                     <div>
                         <div class="mb-3">
                             <label for="email" class="form-label">E-mail</label>

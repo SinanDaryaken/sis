@@ -17,9 +17,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('person_id')->index()->constrained()->cascadeOnDelete();
             $table->foreignId('family_id')->nullable()->constrained();
-            $table->string('student_number');
+            $table->unsignedInteger('student_number');
             $table->string('uid')->unique();
             $table->timestamps();
+
+            $table->unique(['person_id'], 'unique_name_location');
         });
     }
 
@@ -30,6 +32,12 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::enableForeignKeyConstraints();
+        Schema::table('students', function (Blueprint $table) {
+            $table->dropForeign(['person_id']);
+            $table->dropUnique('unique_name_location');
+        });
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('students');
     }
 };
