@@ -55,9 +55,9 @@ class Person extends Model
     /**
      * @return HasOne
      */
-    public function family(): HasOne
+    public function guardian(): HasOne
     {
-        return $this->hasOne(Family::class);
+        return $this->hasOne(Guardian::class);
     }
 
     public function shortName(): Attribute

@@ -18,14 +18,14 @@ use Illuminate\Database\Eloquent\Builder;
  * @property-read Carbon $updated_at
  * * @mixin Builder
  */
-class Family extends Authenticatable
+class Guardian extends Authenticatable
 {
     use Notifiable;
 
     /**
      * @var string
      */
-    protected $table = 'families';
+    protected $table = 'guardians';
 
     /**
      * @var string[]

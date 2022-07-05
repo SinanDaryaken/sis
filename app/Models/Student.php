@@ -11,7 +11,7 @@ use Illuminate\Support\Carbon;
 /**
  * @property-read int $id
  * @property int $person_id
- * @property int $family_id
+ * @property int $guardian_id
  * @property int $student_number
  * @property string $uid
  * @property-read Carbon $created_at
@@ -37,7 +37,7 @@ class Student extends Model
      */
     protected $fillable = [
         'person_id',
-        'family_id',
+        'guardian_id',
         'student_number',
         'uid',
     ];
@@ -53,8 +53,8 @@ class Student extends Model
     /**
      * @return BelongsTo
      */
-    public function family(): BelongsTo
+    public function guardian(): BelongsTo
     {
-        return $this->belongsTo(Family::class);
+        return $this->belongsTo(Guardian::class);
     }
 }

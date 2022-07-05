@@ -20,7 +20,7 @@ class PersonResource extends JsonResource
             'email' => $this->surname,
             'birth_date' => $this->birth_date,
             'phone' => $this->phone ?? 'N\A',
-            'family' => $this->family,
+            'guardian' => $this->guardian,
             'student' => $this->student
         ];
     }

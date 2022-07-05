@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->string('surname');
-            $table->date('birth_date');
+            $table->date('birth_date')->nullable();
             $table->string('phone')->nullable();
             $table->timestamps();
         });

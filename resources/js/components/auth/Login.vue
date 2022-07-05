@@ -1,11 +1,10 @@
 <template>
     <div class="auth-fluid">
-        <!--Auth fluid left content -->
         <div class="auth-fluid-form-box">
             <div class="align-items-center d-flex h-100">
                 <div class="card-body">
                     <div class="auth-brand text-center text-lg-start">
-                        <span><img src="/assets/images/logo.png" height="108"></span>
+                        <span><img src="https://laravel.com/img/logomark.min.svg"></span>
                     </div>
                     <h4 class="mt-0">Login</h4>
                     <div>
@@ -22,6 +21,10 @@
                                 <i class="mdi mdi-login"></i>
                                 Login
                             </button>
+                            <router-link :to="{name: 'register'}" class="btn btn-success mt-1">
+                                <i class="mdi mdi-pencil"></i>
+                                Register
+                            </router-link>
                         </div>
                     </div>
                 </div>
@@ -55,7 +58,7 @@ export default {
                     location.reload()
                 })
                 .catch(error => {
-                    console.log(error)
+                    this.$root.errorHandler(error);
                 });
         }
     }
