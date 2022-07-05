@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\FamilyController;
+use App\Http\Controllers\GuardianController;
 use App\Http\Controllers\StudentController;
 
 /*
@@ -23,7 +23,7 @@ Route::middleware('auth:web')->group(function () {
     Route::get('auth', [LoginController::class, 'auth']);
     Route::post('logout', [LoginController::class, 'logout']);
 
-    Route::get('students/get-by-family/{family}', [StudentController::class, 'getByFamily']);
-    Route::apiResource('family', FamilyController::class)->only('show', 'update');
+    Route::get('students/get-by-guardian/{guardian}', [StudentController::class, 'getByGuardian']);
+    Route::apiResource('guardian', GuardianController::class)->only('show', 'update');
 
 });

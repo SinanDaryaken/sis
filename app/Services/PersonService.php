@@ -10,12 +10,12 @@ use App\Models\Person;
 class PersonService
 {
     /**
-     * @param Person $family
+     * @param Person $guardian
      * @return PersonResource
      */
-    public function setSingle(Person $family): PersonResource
+    public function setSingle(Person $guardian): PersonResource
     {
-        return new PersonResource($family);
+        return new PersonResource($guardian);
     }
 
     /**

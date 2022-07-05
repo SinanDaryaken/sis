@@ -107,7 +107,7 @@ export default {
     },
     methods: {
         getStudents() {
-            axios.get('students/get-by-family/' + this.auth.id).then((response) => {
+            axios.get('students/get-by-guardian/' + this.auth.id).then((response) => {
                 this.students = response.data.data;
             }).catch((error) => {
                 this.$root.errorHandler(error);

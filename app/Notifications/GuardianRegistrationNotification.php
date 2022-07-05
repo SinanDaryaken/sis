@@ -2,12 +2,12 @@
 
 namespace App\Notifications;
 
-use App\Models\Family;
+use App\Models\Guardian;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class FamilyRegistrationNotification extends Notification
+class GuardianRegistrationNotification extends Notification
 {
     use Queueable;
 

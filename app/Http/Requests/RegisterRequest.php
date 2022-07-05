@@ -28,8 +28,8 @@ class RegisterRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:families'],
-            'uid' => ['required', 'exists:students,uid,family_id,NULL'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:guardians'],
+            'uid' => ['required', 'exists:students,uid,guardian_id,NULL'],
             'password' => [
                 'required',
                 'confirmed',

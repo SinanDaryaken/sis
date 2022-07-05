@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Facades\OutputService;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
-use App\Models\Family;
-use App\Repositories\FamilyRepository;
+use App\Models\Guardian;
+use App\Repositories\GuardianRepository;
 use App\Repositories\PersonRepository;
 use App\Repositories\StudentRepository;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Hash;
 class RegisterController extends Controller
 {
     public function __construct(
-        public FamilyRepository $familyRepository,
+        public GuardianRepository $guardianRepository,
         public StudentRepository $studentRepository,
         public PersonRepository $personRepository
     ) {
@@ -24,16 +24,16 @@ class RegisterController extends Controller
     public function register(RegisterRequest $request)
     {
         $personData = $request->only('name', 'surname');
-        $familyData = $request->only('email', 'password');
+        $guardianData = $request->only('email', 'password');
         $uid = $request->get('uid');
 
         $person = $this->personRepository->store($personData);
-        $family = $this->familyRepository->register($person, $familyData);
-        $this->studentRepository->updateFamily($family, $uid);
+        $guardian = $this->guardianRepository->register($person, $guardianData);
+        $this->studentRepository->updateGuardian($guardian, $uid);
 
-        $this->guard()->login($family);
+        $this->guard()->login($guardian);
 
-        return OutputService::init($family, 'Registration Successful')->response();
+        return OutputService::init($guardian, 'Registration Successful')->response();
     }
 
     protected function guard()
@@ -43,7 +43,7 @@ class RegisterController extends Controller
 
     protected function create(array $data)
     {
-        return Family::create([
+        return Guardian::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],

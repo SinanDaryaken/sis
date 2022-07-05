@@ -10,12 +10,12 @@ use App\Models\Student;
 class StudentService
 {
     /**
-     * @param Student $family
+     * @param Student $guardian
      * @return StudentResource
      */
-    public function setSingle(Student $family): StudentResource
+    public function setSingle(Student $guardian): StudentResource
     {
-        return new StudentResource($family);
+        return new StudentResource($guardian);
     }
 
     /**

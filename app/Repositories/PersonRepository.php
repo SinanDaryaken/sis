@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Contracts\PersonInterface;
-use App\Models\Family;
+use App\Models\Guardian;
 use App\Models\Person;
 
 class PersonRepository implements PersonInterface
@@ -20,8 +20,8 @@ class PersonRepository implements PersonInterface
         return $this->model->create($data);
     }
 
-    public function updateFamily(Family $family, array $data): bool
+    public function updateGuardian(Guardian $guardian, array $data): bool
     {
-        return $this->model->where('id', $family->person_id)->update($data);
+        return $this->model->where('id', $guardian->person_id)->update($data);
     }
 }

@@ -2,12 +2,12 @@
 
 namespace App\Contracts;
 
-use App\Models\Family;
+use App\Models\Guardian;
 use Illuminate\Database\Eloquent\Collection;
 
 interface StudentInterface
 {
-    public function getByFamily(Family $family): Collection;
+    public function getByGuardian(Guardian $guardian): Collection;
 
-    public function updateFamily(Family $family, string $uid): bool;
+    public function updateGuardian(Guardian $guardian, string $uid): bool;
 }

@@ -29,48 +29,48 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="name" v-model="family.name"
+                                    <input type="text" class="form-control" id="name" v-model="guardian.name"
                                            placeholder="Name"/>
                                     <label for="name">Name</label>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="surname" v-model="family.surname"
+                                    <input type="text" class="form-control" id="surname" v-model="guardian.surname"
                                            placeholder="Surname"/>
                                     <label for="surname">Surname</label>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="phone" v-model="family.phone"
+                                    <input type="text" class="form-control" id="phone" v-model="guardian.phone"
                                            placeholder="Phone"/>
                                     <label for="phone">Phone</label>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-floating mb-3">
-                                    <input type="date" class="form-control" id="birth_date" v-model="family.birth_date"/>
+                                    <input type="date" class="form-control" id="birth_date" v-model="guardian.birth_date"/>
                                     <label for="birth_date">Birth date</label>
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="email" disabled v-model="family.email"
+                                    <input type="email" class="form-control" id="email" disabled v-model="guardian.email"
                                            placeholder="Email"/>
                                     <label for="email">Email</label>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" id="password" v-model="family.password"
+                                    <input type="password" class="form-control" id="password" v-model="guardian.password"
                                            placeholder="Password"/>
                                     <label for="password">Password</label>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" id="password_confirmation" v-model="family.password_confirmation"
+                                    <input type="password" class="form-control" id="password_confirmation" v-model="guardian.password_confirmation"
                                            placeholder="Phone"/>
                                     <label for="password_confirmation">Password Confirmation</label>
                                 </div>
@@ -93,25 +93,25 @@ export default {
     name: "Profile",
     data() {
         return {
-            family: {
+            guardian: {
                 password: '',
                 password_confirmation: ''
             },
         }
     },
     methods: {
-        getFamily() {
-            axios.get('family/' + this.auth.id).then((response) => {
-                this.family = response.data.data;
+        getGuardian() {
+            axios.get('guardian/' + this.auth.id).then((response) => {
+                this.guardian = response.data.data;
                 this.$.appContext.config.globalProperties.auth = response.data.data;
             }).catch((error) => {
                 this.$root.errorHandler(error);
             });
         },
         update() {
-            axios.put('family/' + this.family.id, this.family)
+            axios.put('guardian/' + this.guardian.id, this.guardian)
                 .then((response) => {
-                    this.getFamily();
+                    this.getGuardian();
                     this.$root.successHandler(response);
                 })
                 .catch((error) => {
@@ -120,7 +120,7 @@ export default {
         }
     },
     created() {
-        this.getFamily();
+        this.getGuardian();
     }
 }
 </script>

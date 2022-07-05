@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('families', function (Blueprint $table) {
+        Schema::create('guardians', function (Blueprint $table) {
             $table->id();
             $table->foreignId('person_id')->index()->constrained()->cascadeOnDelete();
             $table->string('email')->unique();
@@ -30,11 +30,11 @@ return new class extends Migration
     public function down()
     {
         Schema::enableForeignKeyConstraints();
-        Schema::table('families', function (Blueprint $table) {
+        Schema::table('guardians', function (Blueprint $table) {
             $table->dropForeign(['person_id']);
             $table->dropUnique('unique_name_location');
         });
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('families');
+        Schema::dropIfExists('guardians');
     }
 };

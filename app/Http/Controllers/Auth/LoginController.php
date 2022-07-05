@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\FamilyResource;
+use App\Http\Resources\GuardianResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Facades\OutputService;
@@ -12,8 +12,8 @@ class LoginController extends Controller
 {
     public function auth(Request $request)
     {
-        $family = Auth::guard('sanctum')->user();
-        $data = $family ? new FamilyResource($family) : null;
+        $guardian = Auth::guard('sanctum')->user();
+        $data = $guardian ? new GuardianResource($guardian) : null;
         return OutputService::init($data)->response();
     }
 
@@ -24,8 +24,8 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            $family = Auth::user();
-            $data = new FamilyResource($family);
+            $guardian = Auth::user();
+            $data = new GuardianResource($guardian);
             return OutputService::init($data)->response();
         }
 

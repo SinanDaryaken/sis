@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Contracts\StudentInterface;
-use App\Models\Family;
+use App\Models\Guardian;
 use App\Models\Student;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -16,14 +16,14 @@ class StudentRepository implements StudentInterface
     {
     }
 
-    public function getByFamily(Family $family): Collection
+    public function getByGuardian(Guardian $guardian): Collection
     {
-        return $this->model->where('family_id', $family->id)->get();
+        return $this->model->where('guardian_id', $guardian->id)->get();
     }
 
-    public function updateFamily(Family $family, string $uid): bool
+    public function updateGuardian(Guardian $guardian, string $uid): bool
     {
-        return $this->model->where('uid', $uid)->update(['family_id' => $family->id]);
+        return $this->model->where('uid', $uid)->update(['guardian_id' => $guardian->id]);
     }
 
 }
