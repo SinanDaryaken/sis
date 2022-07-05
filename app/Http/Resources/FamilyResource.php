@@ -18,8 +18,11 @@ class FamilyResource extends JsonResource
             'id' => $this->id,
             'person_id' => $this->person_id,
             'email' => $this->email,
-            'person' => $this->person,
-            'student' => $this->students
+            'name' => $this->person->name,
+            'surname' => $this->person->surname,
+            'birth_date' => $this->person->birth_date,
+            'phone' => $this->person->phone,
+            'student' => StudentResource::collection($this->students)
         ];
     }
 }

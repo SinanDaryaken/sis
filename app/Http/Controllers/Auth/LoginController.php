@@ -14,7 +14,7 @@ class LoginController extends Controller
     {
         $family = Auth::guard('sanctum')->user();
         $data = $family ? new FamilyResource($family) : null;
-        return OutputService::init($data)->output();
+        return OutputService::init($data)->response();
     }
 
     public function login(Request $request)
@@ -26,18 +26,26 @@ class LoginController extends Controller
 
             $family = Auth::user();
             $data = new FamilyResource($family);
-            return OutputService::init($data)->output();
+            return OutputService::init($data)->response();
         }
 
-        return OutputService::init(message: 'These credentials do not match our records.', code: 401)->output();
+        return OutputService::init(message: 'These credentials do not match our records.', code: 401)->response();
     }
 
-    public function logout(Request $request)
+    protected function credentials()
+    {
+        return [
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ];
+    }
+
+    protected function logout(Request $request)
     {
         Auth::guard('web')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return OutputService::init()->output();
+        return OutputService::init()->response();
     }
 }

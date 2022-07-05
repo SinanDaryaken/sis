@@ -6,7 +6,7 @@ import router from './router'
 import 'sweetalert2/dist/sweetalert2.min.css';
 import VueSweetalert2 from 'vue-sweetalert2';
 
-import Main from './components/module/Main.vue';
+import Main from './components/pages/Main.vue';
 
 const app = createApp(Main);
 
